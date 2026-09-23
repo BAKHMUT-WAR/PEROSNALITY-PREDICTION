@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Personality Prediction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <p class="kicker">A Big Five &amp; MBTI questionnaire, scored by your own models</p>
+    <h1>Personality Prediction</h1>
+    <p class="lede">Answer honestly — there are no right answers. Your responses are sent to a Logistic Regression / Random Forest model running on a server you control, and scored instantly.</p>
+  </header>
+
+  <section class="api-config">
+    <label for="apiBase">Model API address</label>
+    <input type="text" id="apiBase" value="http://localhost:5000" spellcheck="false" />
+    <span id="apiStatus" class="api-status">not checked</span>
+  </section>
+
+  <nav class="survey-toggle" role="tablist" aria-label="Choose survey length">
+    <button class="toggle-btn active" data-survey="short" role="tab" aria-selected="true">
+      Short survey <span>12 questions · ~2 min</span>
+    </button>
+    <button class="toggle-btn" data-survey="long" role="tab" aria-selected="false">
+      Long survey <span>58 questions · ~10 min</span>
+    </button>
+  </nav>
+
+  <p class="long-warning" id="longWarning" hidden>
+    Note: the MBTI items below (labelled "Item qN") use placeholder wording — the original
+    question bank wasn't available when this survey was built. Swap in the real wording in
+    <code>script.js</code> → <code>LONG_QUESTIONS</code> before using this with real respondents.
+  </p>
+
+  <form id="surveyForm" class="survey"></form>
+
+  <div class="submit-row">
+    <button type="submit" form="surveyForm" id="submitBtn" class="submit-btn">Get my results</button>
+    <span id="formError" class="form-error"></span>
+  </div>
+
+  <section id="results" class="results" hidden>
+    <h2>Your profile</h2>
+    <div class="result-grid" id="resultGrid"></div>
+    <button id="retakeBtn" class="retake-btn">Take again</button>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
